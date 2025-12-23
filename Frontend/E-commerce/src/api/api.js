@@ -22,9 +22,11 @@ export const getSingleProduct = async (productId) => {
     }
 };
 
-export const getUser = async()=>{
+export const getUser = async(token)=>{
     try {
-        const res = await axios.get(`${backendurl}/api/user`)
+        const res = await axios.get(`${backendurl}/api/user`,{
+            headers:{Authorization:`Bearer ${token} `}
+        })
         return res.data
     } catch (error) {
         console.log("error", error)
