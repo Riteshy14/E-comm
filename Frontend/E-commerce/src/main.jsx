@@ -5,9 +5,9 @@ import { ShopContextProvider } from './context/ShopContext.jsx'
 import { BrowserRouter } from 'react-router-dom'
 
 createRoot(document.getElementById('root')).render(
-    <ShopContextProvider>
     <BrowserRouter>
+    <ShopContextProvider>
     <App />
-    </BrowserRouter>
     </ShopContextProvider>
+    </BrowserRouter>
 )

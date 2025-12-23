@@ -4,6 +4,7 @@ import { getProductData } from "../api/api";
 import { useEffect } from "react";
 import {toast} from 'react-toastify'
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const ShopContext = createContext();
 const backend_url = import.meta.env.VITE_BACKEND_URL;
@@ -15,11 +16,10 @@ export function ShopContextProvider(props){
     const [loading,setLoading] = useState(false);
     const [searchText, setSearchText] = useState('');
     const [showSearch, setShowSearch] = useState(false);
-    
     const [cartItem, setCartItem] = useState({});
     const [error,setError]= useState(null);
     const [token,setToken] = useState(localStorage.getItem('token') || "")
-
+    const navigate = useNavigate();
    useEffect(()=>{
     if(token){
       localStorage.setItem('token',token)
@@ -38,6 +38,12 @@ export function ShopContextProvider(props){
  const addToCart = async (itemId, size) => {
   if (!size) {
     toast.error('Select Product Size');
+    return;
+  }
+
+  if(!token){
+    navigate('/signup')
+    toast.error("make account or login")
     return;
   }
 
