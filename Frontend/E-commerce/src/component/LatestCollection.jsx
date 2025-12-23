@@ -29,10 +29,10 @@ export function LatestCollection(){
     </div>): (
         <div className="my-10">
         <div className="flex justify-center items-center">
-            <p className="text-4xl mt-7 text-gray-900 font-mono "><span className="text-gray-600">LATEST</span> COLLECTIONS</p>
+            <p className="text-xl md:text-4xl  mt-7 text-gray-900 font-mono "><span className="text-gray-600">LATEST</span> COLLECTIONS</p>
             <hr className="h-[2.5px] ml-2 mt-6 w-13 bg-gray-700"/>
         </div>
-        <div className="mt-5 text-center text-lg text-gray-600">
+        <div className="mt-5 text-center text-sm md:text-lg text-gray-600">
             <p className="font-medium">
                 Discover our exclusive range of products, carefully curated to offer the best in quality and style. Explore the latest trends, updated regularly to keep your wardrobe fresh and fashionable.
             </p>

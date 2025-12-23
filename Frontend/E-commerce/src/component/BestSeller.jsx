@@ -28,13 +28,13 @@ export function BestSeller() {
       </div>) : 
   ( <div>
       <div className="flex justify-center items-center">
-        <p className="text-4xl mt-7 text-gray-900 font-mono ">
+        <p className="text-xl md:text-4xl mt-7 text-gray-900 font-mono ">
           <span className="text-gray-600">BEST</span>SELLER
         </p>
         <hr className="h-[2.5px] ml-2 mt-6 w-13 bg-gray-700" />
       </div>
 
-      <div className="my-6 text-center text-lg text-gray-600 max-w-3xl mx-auto">
+      <div className="my-6 text-center text-sm md:text-lg text-gray-600 max-w-3xl mx-auto">
         <p>
           Check out our top-selling products loved by customers worldwide. These
           items are highly rated for quality, style, and value.
