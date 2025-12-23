@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faUser,faShoppingCart,faBars,faXmark} from "@fortawesome/free-solid-svg-icons";
+import { faUser, faShoppingCart, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { ShopContext } from "../context/ShopContext";
 
-export function TopBar({icon}) {
+export function TopBar({ icon }) {
   const {
     setShowSearch,
     getCartCount,
@@ -22,6 +22,11 @@ export function TopBar({icon}) {
     setToken("");
     setCartItem({});
     navigate("/signin");
+  };
+
+  const goToAdmin = () => {
+    // Redirect to admin page
+    window.location.href = "https://e-comm-woad-zeta.vercel.app/";
   };
 
   return (
@@ -49,14 +54,22 @@ export function TopBar({icon}) {
                 {path === "/" ? "Home" : path.slice(1)}
               </NavLink>
             ))}
+
+            {/* ADMIN BUTTON */}
+            <button
+              onClick={goToAdmin}
+              className="text-black flex justify-center items-center bg-white px-3 cursor-pointer border rounded-2xl transition-all duration-200 active:bg-gray-200 active:scale-90"
+            >
+              Admin
+            </button>
           </div>
 
           {/* RIGHT ICONS */}
           <div className="flex items-center gap-5">
 
-            <img src={icon} className="h-5 w-5 flex items-center text-center justify-center cursor-pointer" onClick={()=> {setShowSearch(true); navigate('/collection')}} alt="" />
+            <img src={icon} className="h-5 w-5 cursor-pointer" onClick={() => { setShowSearch(true); navigate('/collection'); }} alt="" />
 
-            {/* 👤 PROFILE */}
+            {/* PROFILE */}
             <div className="relative">
               <FontAwesomeIcon
                 icon={faUser}
@@ -93,15 +106,15 @@ export function TopBar({icon}) {
               )}
             </div>
 
-            {/* 🛒 CART */}
+            {/* CART */}
             <Link to="/cart" className="relative">
               <FontAwesomeIcon icon={faShoppingCart} className="w-5" />
-              <span className="absolute -right-2 -bottom-2 border bg-black  text-white text-[13px] w-5 h-5 rounded-full flex items-center justify-center">
+              <span className="absolute -right-2 -bottom-2 border bg-black text-white text-[13px] w-5 h-5 rounded-full flex items-center justify-center">
                 {getCartCount()}
               </span>
             </Link>
 
-            {/* ☰ MOBILE MENU (AFTER CART) */}
+            {/* MOBILE MENU */}
             <div className="md:hidden">
               <FontAwesomeIcon
                 icon={menuOpen ? faXmark : faBars}
@@ -131,6 +144,14 @@ export function TopBar({icon}) {
               {item.name}
             </NavLink>
           ))}
+
+          {/* ADMIN BUTTON for mobile menu */}
+          <button
+            onClick={goToAdmin}
+            className="block w-full text-left px-4 py-3 border-b bg-red-500 text-white hover:bg-red-600"
+          >
+            Admin
+          </button>
         </div>
       )}
     </>
